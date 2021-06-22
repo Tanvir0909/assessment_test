@@ -49,5 +49,22 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
+    // View Model
+    def viewModel_version = "1.1.1"
+    implementation "android.arch.lifecycle:extensions:$viewModel_version"
+    implementation "android.arch.lifecycle:viewmodel:$viewModel_version"
+
+    // Retrofit 2
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+
+    // Rxjava
+    def rxjava_version = "3.0.7"
+    implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
+
+    // Retrofit adapter for Rxjava
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
 
 }
