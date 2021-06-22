@@ -4,7 +4,7 @@
     <data>
         <variable
             name="user"
-            type="com.example.assessmenttest.model.CountryModel" />
+            type="com.example.assessmenttest.model.userList.Datum" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -67,7 +67,7 @@
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="@{user.countryName}"
+                            android:text="@{user.firstName}"
                             android:textSize="@dimen/_14sdp" />
 
                         <TextView
@@ -78,7 +78,7 @@
                             android:maxLines="1"
                             android:padding="@dimen/_2sdp"
                             android:singleLine="true"
-                            android:text="@{user.capital}"
+                            android:text="@{user.lastName}"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>

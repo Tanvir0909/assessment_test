@@ -2,9 +2,11 @@ package com.example.assessmenttest.api;
 
 import com.example.assessmenttest.model.userList.UserList;
 
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
+
 import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Single;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkService {
@@ -16,7 +18,7 @@ public class NetworkService {
     private UsersApi api = new Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
             .create(UsersApi.class);
 
@@ -31,7 +33,7 @@ public class NetworkService {
         return instance;
     }
 
-    public Flowable<UserList> getUserList(int page){
-        return api.getUserList(page);
+    public Single<UserList> getUserList(){
+        return api.getUserList();
     }
 }

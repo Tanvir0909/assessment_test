@@ -61,12 +61,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void observerViewModel() {
-        viewModel.countries.observe(
+        viewModel.users.observe(
                 getViewLifecycleOwner(),
-                countryModels -> {
-                    userListAdapter.updateUserList(countryModels);
+                userList -> {
+                    userListAdapter.updateUserList(userList.getData());
                 });
-        viewModel.countryLoadError.observe(
+        viewModel.usersLoadError.observe(
                 getViewLifecycleOwner(), isError -> {
                     if (isError != null){
                         if (isError)

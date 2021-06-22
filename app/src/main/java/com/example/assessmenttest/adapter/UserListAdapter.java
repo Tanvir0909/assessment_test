@@ -12,20 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.assessmenttest.R;
 import com.example.assessmenttest.databinding.ItemShowAllUserBinding;
 import com.example.assessmenttest.model.CountryModel;
+import com.example.assessmenttest.model.userList.Datum;
 
 import java.util.List;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
 
-    private List<CountryModel> users;
+    private List<Datum> users;
     Context context;
 
-    public UserListAdapter(List<CountryModel> users, Context context) {
+    public UserListAdapter(List<Datum> users, Context context) {
         this.users = users;
         this.context = context;
     }
 
-    public void updateUserList(List<CountryModel> users) {
+    public void updateUserList(List<Datum> users) {
         this.users.clear();
         this.users.addAll(users);
         notifyDataSetChanged();
@@ -40,7 +41,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CountryModel userList = users.get(position);
+        Datum userList = users.get(position);
         holder.bind(userList);
     }
 
@@ -57,7 +58,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
             this.userListBinding = userListBinding;
         }
 
-        public void bind(CountryModel userList){
+        public void bind(Datum userList){
             userListBinding.setUser(userList);
             userListBinding.executePendingBindings();
         }

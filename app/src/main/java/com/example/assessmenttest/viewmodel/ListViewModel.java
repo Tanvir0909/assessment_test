@@ -3,57 +3,59 @@ package com.example.assessmenttest.viewmodel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.assessmenttest.api.NetworkService;
 import com.example.assessmenttest.model.CountryModel;
+import com.example.assessmenttest.model.userList.UserList;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.observers.DisposableSingleObserver;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.reactivex.subscribers.DisposableSubscriber;
 
 public class ListViewModel extends ViewModel {
 
-    public MutableLiveData<List<CountryModel>> countries = new MutableLiveData<List<CountryModel>>();
-    public MutableLiveData<Boolean> countryLoadError = new MutableLiveData<Boolean>();
+    public MutableLiveData<UserList> users = new MutableLiveData<UserList>();
+    public MutableLiveData<Boolean> usersLoadError = new MutableLiveData<Boolean>();
     public MutableLiveData<Boolean> loading = new MutableLiveData<Boolean>();
 
-    public void refresh(){
+    private NetworkService networkService = NetworkService.getInstance();
+
+    private CompositeDisposable disposable = new CompositeDisposable();
+
+    public void refresh() {
         fatchCountries();
     }
 
     private void fatchCountries() {
-        CountryModel countryModel= new CountryModel("Bangladesh", "Dhaka");
-        CountryModel countryMode2= new CountryModel("India", "Dhaka");
-        CountryModel countryMode3= new CountryModel("Nepal", "Dhaka");
-        CountryModel countryMode4= new CountryModel("Bhutan", "Dhaka");
-        CountryModel countryMode5= new CountryModel("China", "Dhaka");
-        CountryModel countryMode6= new CountryModel("Usa", "Dhaka");
+        loading.setValue(true);
+        disposable.add(
+                networkService.getUserList()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<UserList>() {
+                    @Override
+                    public void onSuccess(@NonNull UserList userList) {
+                        users.setValue(userList);
+                        usersLoadError.setValue(false);
+                        loading.setValue(false);
+                    }
 
-        List<CountryModel> list = new ArrayList<>();
-        list.add(countryModel);
-        list.add(countryMode2);
-        list.add(countryMode3);
-        list.add(countryMode4);
-        list.add(countryMode5);
-        list.add(countryMode6);
-        list.add(countryModel);
-        list.add(countryMode2);
-        list.add(countryMode3);
-        list.add(countryMode4);
-        list.add(countryMode5);
-        list.add(countryMode6);
-        list.add(countryModel);
-        list.add(countryMode2);
-        list.add(countryMode3);
-        list.add(countryMode4);
-        list.add(countryMode5);
-        list.add(countryMode6);
-        list.add(countryModel);
-        list.add(countryMode2);
-        list.add(countryMode3);
-        list.add(countryMode4);
-        list.add(countryMode5);
-        list.add(countryMode6);
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        usersLoadError.setValue(true);
+                        loading.setValue(false);
+                    }
+                })
 
-        countries.setValue(list);
-        countryLoadError.setValue(false);
-        loading.setValue(false);
+        );
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        disposable.clear();
     }
 }
