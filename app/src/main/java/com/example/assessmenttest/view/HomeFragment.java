@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment {
         mTitle.setText("abc");*/
 
 
+
         viewModel = ViewModelProviders.of(this).get(ListViewModel.class);
 
         userListAdapter = new UserListAdapter(new ArrayList<>(), getContext());

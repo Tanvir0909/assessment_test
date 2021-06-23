@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     NavController navController;
     ActivityMainBinding mainBinding;
+    private TextView title;
 
 
     @Override
@@ -27,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        TextView title = toolbar.findViewById(R.id.toolbar_title);
-      //  title.setText("test abc");
+        title = toolbar.findViewById(R.id.toolbar_title);
+        title.setText("test abc");
+
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         BottomNavigationView navView = mainBinding.navView;
