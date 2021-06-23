@@ -58,7 +58,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
             this.userListBinding = userListBinding;
         }
 
-        public void bind(Datum userList){
+        public void bind(Datum userList) {
             userListBinding.setUser(userList);
             userListBinding.executePendingBindings();
         }

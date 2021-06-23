@@ -37,7 +37,10 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
-                android:background="?android:attr/windowBackground"
+                android:background="@drawable/round_bottom_navigation"
+                app:itemIconTint="@drawable/bottom_navigation_selector"
+                app:itemTextColor="@drawable/bottom_navigation_selector"
+                app:labelVisibilityMode="labeled"
                 app:menu="@menu/bottom_nav_menu" />
 
 

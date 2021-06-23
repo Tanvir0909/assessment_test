@@ -11,10 +11,10 @@
         android:title="@string/browse"/>
     <item
         android:id="@+id/navigation_settings"
-        android:icon="@drawable/ic_baseline_saved_search_24"
+        android:icon="@drawable/ic_outline_settings_24"
         android:title="@string/settings"/>
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_baseline_saved_search_24"
+        android:icon="@drawable/ic_outline_dashboard_24"
         android:title="@string/dashboard"/>
 </menu>

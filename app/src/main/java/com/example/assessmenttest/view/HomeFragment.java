@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.assessmenttest.R;
 import com.example.assessmenttest.adapter.UserListAdapter;
 import com.example.assessmenttest.databinding.FragmentHomeBinding;
-import com.example.assessmenttest.model.CountryModel;
 import com.example.assessmenttest.viewmodel.ListViewModel;
 
 import java.util.ArrayList;
@@ -35,14 +35,18 @@ public class HomeFragment extends Fragment {
     RecyclerView rvUserList;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         homeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 
-        //getActivity().setTitle("Company List");
-        //Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+
+   /*     Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        TextView mTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        mTitle.setText("abc");*/
+
 
         viewModel = ViewModelProviders.of(this).get(ListViewModel.class);
 
@@ -68,7 +72,7 @@ public class HomeFragment extends Fragment {
                 });
         viewModel.usersLoadError.observe(
                 getViewLifecycleOwner(), isError -> {
-                    if (isError != null){
+                    if (isError != null) {
                         if (isError)
                             homeBinding.listError.setVisibility(View.VISIBLE);
                         else
@@ -81,14 +85,14 @@ public class HomeFragment extends Fragment {
         viewModel.loading.observe(
                 getViewLifecycleOwner(),
                 isLoading -> {
-                    if (isLoading!= null){
+                    if (isLoading != null) {
                         if (isLoading)
                             homeBinding.progressBar.setVisibility(View.VISIBLE);
                         else
                             homeBinding.progressBar.setVisibility(View.GONE);
                     }
 
-        });
+                });
 
     }
 }

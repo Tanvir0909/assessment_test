@@ -33,22 +33,22 @@ public class ListViewModel extends ViewModel {
         loading.setValue(true);
         disposable.add(
                 networkService.getUserList()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<UserList>() {
-                    @Override
-                    public void onSuccess(@NonNull UserList userList) {
-                        users.setValue(userList);
-                        usersLoadError.setValue(false);
-                        loading.setValue(false);
-                    }
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<UserList>() {
+                            @Override
+                            public void onSuccess(@NonNull UserList userList) {
+                                users.setValue(userList);
+                                usersLoadError.setValue(false);
+                                loading.setValue(false);
+                            }
 
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        usersLoadError.setValue(true);
-                        loading.setValue(false);
-                    }
-                })
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                usersLoadError.setValue(true);
+                                loading.setValue(false);
+                            }
+                        })
 
         );
     }
