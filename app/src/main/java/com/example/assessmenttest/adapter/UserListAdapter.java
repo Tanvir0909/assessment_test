@@ -32,7 +32,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         notifyDataSetChanged();
     }
 
-    public void clearUserList(){
+    public void clearUserList() {
         this.users.clear();
     }
 
@@ -68,11 +68,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
             userListBinding.skillLayout.removeAllViews();
             LayoutInflater inflater = LayoutInflater.from(context);
 
-            if (userList.getProfile().getSkills().size() != 0){
+            if (userList.getProfile().getSkills().size() != 0) {
                 for (int i = 0; i < userList.getProfile().getSkills().size(); i++) {
                     View subCompanyView = inflater.inflate(R.layout.item_skill_show, null);
                     TextView skillName = subCompanyView.findViewById(R.id.skill_name);
-                    skillName.setText("#"+ userList.getProfile().getSkills().get(i).toString());
+                    skillName.setText("#" + userList.getProfile().getSkills().get(i).toString());
                     userListBinding.skillLayout.addView(subCompanyView);
                 }
             }

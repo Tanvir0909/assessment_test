@@ -1,7 +1,9 @@
 package com.example.assessmenttest.view;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
@@ -13,9 +15,11 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.assessmenttest.R;
@@ -40,21 +44,11 @@ public class HomeFragment extends Fragment {
     String nextPage = null;
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         homeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
-
-
-        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        TextView mTitle = homeBinding.getRoot().findViewById(R.id.toolbar_title);
-        mTitle.setText("abc");
-
-
-
 
         viewModel = ViewModelProviders.of(this).get(ListViewModel.class);
 
@@ -84,7 +78,6 @@ public class HomeFragment extends Fragment {
         });
 
         observerViewModel();
-
 
 
         return homeBinding.getRoot();
@@ -122,4 +115,5 @@ public class HomeFragment extends Fragment {
                 });
 
     }
+
 }
