@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_2sdp"
-        android:background="#0000"
         android:orientation="vertical">
 
 
@@ -20,17 +19,19 @@
             android:id="@+id/user_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4sdp"
+            android:layout_margin="@dimen/_6sdp"
             android:checkable="true"
             android:clickable="true"
             android:focusable="true"
-            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
             app:cardElevation="@dimen/_2sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#FAF4FD"
+                android:padding="@dimen/_8sdp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -47,10 +48,11 @@
 
                         <ImageView
                             android:id="@+id/user_image"
-                            android:layout_width="@dimen/_34sdp"
-                            android:layout_height="@dimen/_34sdp"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
                             android:padding="@dimen/_1sdp"
-                            android:scaleType="centerInside"/>
+                            android:scaleType="centerInside"
+                            app:imageResource="@{user.profile.avatarUrl}"/>
 
                     </LinearLayout>
 
@@ -65,10 +67,10 @@
                             android:id="@+id/tv_user_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@{user.firstName}"
-                            android:textSize="@dimen/_14sdp" />
+                            android:text="@{user.firstName + ' ' + user.lastName}"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_color_1"/>
 
                         <TextView
                             android:id="@+id/tv_user_country"
@@ -78,13 +80,53 @@
                             android:maxLines="1"
                             android:padding="@dimen/_2sdp"
                             android:singleLine="true"
-                            android:text="@{user.lastName}"
-                            android:textSize="@dimen/_12sdp" />
+                            android:text="@{user.profile.country}"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/text_color_3"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="@color/white"/>
 
                     </LinearLayout>
 
 
+
                 </RelativeLayout>
+
+                <TextView
+                    android:padding="@dimen/_2sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_the_expart"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color_2"/>
+
+                <TextView
+                    android:padding="@dimen/_2sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.profile.coverLetter}"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/text_color_3"/>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:padding="@dimen/_4sdp"
+                        android:id="@+id/skill_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"/>
+
+                </HorizontalScrollView>
+
+
 
             </LinearLayout>
 

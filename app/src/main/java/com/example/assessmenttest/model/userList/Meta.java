@@ -10,7 +10,7 @@ public class Meta {
     private Integer lastPage;
     @SerializedName("next_page_url")
     @Expose
-    private Object nextPageUrl;
+    private String nextPageUrl;
     @SerializedName("prev_page_url")
     @Expose
     private String prevPageUrl;
@@ -26,11 +26,11 @@ public class Meta {
         this.lastPage = lastPage;
     }
 
-    public Object getNextPageUrl() {
+    public String getNextPageUrl() {
         return nextPageUrl;
     }
 
-    public void setNextPageUrl(Object nextPageUrl) {
+    public void setNextPageUrl(String nextPageUrl) {
         this.nextPageUrl = nextPageUrl;
     }
 

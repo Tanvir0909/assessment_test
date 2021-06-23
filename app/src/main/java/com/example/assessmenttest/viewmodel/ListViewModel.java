@@ -25,14 +25,14 @@ public class ListViewModel extends ViewModel {
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
-    public void refresh() {
-        fatchCountries();
+    public void refresh(int pageNumber) {
+        fatchCountries(pageNumber);
     }
 
-    private void fatchCountries() {
+    private void fatchCountries(int pageNumber) {
         loading.setValue(true);
         disposable.add(
-                networkService.getUserList()
+                networkService.getUserList(pageNumber)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableSingleObserver<UserList>() {

@@ -33,7 +33,7 @@ public class NetworkService {
         return instance;
     }
 
-    public Single<UserList> getUserList() {
-        return api.getUserList();
+    public Single<UserList> getUserList(int page) {
+        return api.getUserList(page);
     }
 }

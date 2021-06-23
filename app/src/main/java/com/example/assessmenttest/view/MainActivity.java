@@ -19,19 +19,19 @@ public class MainActivity extends AppCompatActivity {
     NavController navController;
     ActivityMainBinding mainBinding;
     private TextView title;
-
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+       /*  toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        title = toolbar.findViewById(R.id.toolbar_title);
-        title.setText("test abc");
+       title = findViewById(R.id.toolbar_title);
+        title.setText("test abc");*/
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+     //   getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         BottomNavigationView navView = mainBinding.navView;
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
