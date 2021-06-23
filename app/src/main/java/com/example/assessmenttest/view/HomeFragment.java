@@ -37,8 +37,19 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     FragmentHomeBinding homeBinding;
+
+    /**
+     * ListViewModel object
+     */
     private ListViewModel viewModel;
+
+    /**
+     * UserListAdapter object
+     */
     private UserListAdapter userListAdapter;
+    /**
+     * RecyclerView for show user list
+     */
     RecyclerView rvUserList;
     int pageNumber = 1;
     String nextPage = null;
@@ -61,6 +72,7 @@ public class HomeFragment extends Fragment {
         rvUserList.setLayoutManager(layoutManager);
         rvUserList.setAdapter(userListAdapter);
 
+
         homeBinding.scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
@@ -82,6 +94,11 @@ public class HomeFragment extends Fragment {
 
         return homeBinding.getRoot();
     }
+
+
+    /**
+     * Use this method to fetch data and update the adapter
+     */
 
     private void observerViewModel() {
         viewModel.users.observe(

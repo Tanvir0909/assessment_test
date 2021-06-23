@@ -17,19 +17,41 @@ import io.reactivex.subscribers.DisposableSubscriber;
 
 public class ListViewModel extends ViewModel {
 
+
+    /**
+     * only exposes immutable UserList LiveData objects to observe users
+     */
     public MutableLiveData<UserList> users = new MutableLiveData<UserList>();
+
+    /**
+     * only exposes immutable Boolen LiveData objects to observe usersLoadError
+     */
     public MutableLiveData<Boolean> usersLoadError = new MutableLiveData<Boolean>();
+
+    /**
+     * only exposes immutable Boolen LiveData objects to observe loading
+     */
     public MutableLiveData<Boolean> loading = new MutableLiveData<Boolean>();
 
+    /**
+     * Call network service
+     */
     private NetworkService networkService = NetworkService.getInstance();
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
+
+    /**
+     * Use this method to fetch data from API
+     *
+     * @param pageNumber Parameter 1.
+     */
+
     public void refresh(int pageNumber) {
-        fatchCountries(pageNumber);
+        fatchUsers(pageNumber);
     }
 
-    private void fatchCountries(int pageNumber) {
+    private void fatchUsers(int pageNumber) {
         loading.setValue(true);
         disposable.add(
                 networkService.getUserList(pageNumber)
@@ -53,6 +75,10 @@ public class ListViewModel extends ViewModel {
         );
     }
 
+
+    /**
+     * Using clear CompositeDisposable, but can accept new disposable
+     */
     @Override
     protected void onCleared() {
         super.onCleared();
