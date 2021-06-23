@@ -32,6 +32,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         notifyDataSetChanged();
     }
 
+
     public void clearUserList() {
         this.users.clear();
     }
